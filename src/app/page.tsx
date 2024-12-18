@@ -3,9 +3,8 @@ import { neon } from "@neondatabase/serverless";
 import { env } from "./env";
 
 export default async function Home() {
-  
-    const sql = neon(env.NEON_DATABASE_URL);
-    const data = await sql`SELECT 'Hello Neon' as hello;`;
+  const sql = neon(env.NEON_DATABASE_URL);
+  const data = await sql`SELECT 'Hello Neon' as hello;`;
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -18,10 +17,8 @@ export default async function Home() {
           height={38}
           priority
         />
-        
-        <pre>
-          {JSON.stringify(data, null, 2)}
-        </pre>
+
+        <pre>{JSON.stringify(data, null, 2)}</pre>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
