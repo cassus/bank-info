@@ -5,17 +5,19 @@ import { useState } from "react";
 import { Institution } from "./fetchInstitutions";
 import { createEndUserAgreement } from "./createEndUserAgreement";
 
-export function InstitutionBlock({
-  institution,
-}: {
+type Props = {
   institution: Institution;
-}) {
+  accountId: string;
+};
+
+export function InstitutionBlock({ institution, accountId }: Props) {
   const [result, setResult] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const onClick = async () => {
     setIsLoading(true);
     const response = await createEndUserAgreement({
+      accountId,
       institution_id: institution.id,
     });
     setResult(JSON.stringify(response, null, 2));
