@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { neon } from "@neondatabase/serverless";
-import { env } from "./env";
+import { env } from "@/env";
 
 export default async function Home() {
   const sql = neon(env.NEON_DATABASE_URL);
