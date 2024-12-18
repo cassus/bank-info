@@ -1,10 +1,9 @@
 import Image from "next/image";
-import { neon } from "@neondatabase/serverless";
-import { env } from "@/env";
+import { db } from "@/db";
+import { sql } from "kysely";
 
 export default async function Home() {
-  const sql = neon(env.NEON_DATABASE_URL);
-  const data = await sql`SELECT 'Hello Neon' as hello;`;
+  const data = await sql`SELECT 'Hello Neon!' as hello;`.execute(db);
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
