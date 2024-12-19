@@ -27,6 +27,7 @@ export interface Accounts {
   config: Generated<Json>;
   createdAt: Generated<Timestamp>;
   id: Generated<string>;
+  slug: string | null;
   updatedAt: Timestamp | null;
 }
 

@@ -1,20 +1,34 @@
-import { getAccessToken } from "../../../getAccessToken";
+import { db } from "@/db";
+import { getAccessToken } from "@/getAccessToken";
+import { redirect } from "next/navigation";
 import { fetchInstitutions } from "./fetchInstitutions";
 import { InstitutionBlock } from "./InstitutionBlock";
 
 export default async function Page({
   params,
 }: {
-  params: Promise<{ accountId: string }>;
+  params: Promise<{
+    accountId: string;
+  }>;
 }) {
+  const accountId = (await params).accountId;
+
+  const account = await db
+    .selectFrom("accounts")
+    .where("id", "==", accountId)
+    .select("slug")
+    .executeTakeFirst();
+
+  if (account) {
+    return redirect(`/account/${account.slug}/${accountId}`);
+  }
+
   const accessToken = await getAccessToken();
 
   console.log(accessToken);
 
   const institutions = await fetchInstitutions(accessToken);
   console.log(institutions);
-
-  const accountId = (await params).accountId;
 
   return (
     <div>
