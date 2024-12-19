@@ -20,7 +20,7 @@ export default async function Page({
     .executeTakeFirst();
 
   if (account) {
-    return redirect(`/account/${account.slug}/${accountId}`);
+    return redirect(`/connection/${account.slug}/${accountId}`);
   }
 
   const accessToken = await getAccessToken();

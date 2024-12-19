@@ -18,11 +18,11 @@ export default async function Page({
     .executeTakeFirst();
 
   if (!account) {
-    return redirect("/account/new/" + accountId);
+    return redirect("/connection/new/" + accountId);
   }
 
   if (slug !== account.slug) {
-    return redirect(`/account/${account.slug}/${accountId}`);
+    return redirect(`/connection/${account.slug}/${accountId}`);
   }
 
   return (
