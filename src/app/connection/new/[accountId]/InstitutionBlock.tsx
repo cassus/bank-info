@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { Institution } from "./fetchInstitutions";
-import { createEndUserAgreement } from "./createEndUserAgreement";
+import { Institution } from "@/api/fetchInstitutions";
+import { createEndUserAgreement } from "@/api/createEndUserAgreement";
 
 type Props = {
   institution: Institution;

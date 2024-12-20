@@ -1,7 +1,7 @@
 import { db } from "@/db";
-import { getAccessToken } from "@/getAccessToken";
+import { getAccessToken } from "@/api/getAccessToken";
 import { redirect } from "next/navigation";
-import { fetchInstitutions } from "./fetchInstitutions";
+import { fetchInstitutions } from "../../../../api/fetchInstitutions";
 import { InstitutionBlock } from "./InstitutionBlock";
 
 export default async function Page({
@@ -15,7 +15,7 @@ export default async function Page({
 
   const account = await db
     .selectFrom("accounts")
-    .where("id", "==", accountId)
+    .where("id", "=", accountId)
     .select("slug")
     .executeTakeFirst();
 

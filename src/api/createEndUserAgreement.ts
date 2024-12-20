@@ -1,7 +1,7 @@
 "use server";
 
 import { z } from "zod";
-import { getAccessToken } from "@/getAccessToken";
+import { getAccessToken } from "@/api/getAccessToken";
 import { db } from "@/db";
 
 const inputSchema = z.object({
